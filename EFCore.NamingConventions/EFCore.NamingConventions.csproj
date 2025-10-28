@@ -14,10 +14,19 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
 
-    <Description>Custom EF Core Naming Conventions with UpperSnakeCase and CustomCase support.</Description>
-    <Authors>Mahmut Can Kılıç</Authors>
-    <Copyright>Copyright 2025 © Mahmut Can Kılıç</Copyright>
-    <PackageTags>Entity Framework Core;EF Core;Naming Conventions;UpperSnakeCase;CustomCase</PackageTags>
+    <PackageId>EFCore.NamingConventions.Extended</PackageId>
+    <Title>EFCore.NamingConventions.Extended</Title>
+    <Description>
+      Extended EF Core Naming Conventions for database schema mapping.
+      Provides UpperSnakeCase and CustomCase naming strategies in addition to the default conventions.
+      Forked from the EFCore.NamingConventions project by Shay Rojansky (licensed under Apache-2.0).
+    </Description>
+
+    <Authors>EFCore.NamingConventions Team</Authors>
+    <Company>Open Source Community</Company>
+    <Copyright>Copyright © 2025 EFCore.NamingConventions Contributors</Copyright>
+
+    <PackageTags>Entity Framework Core;EFCore;NamingConventions;UpperSnakeCase;CustomCase;ORM</PackageTags>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/MahmutCanKilic/EFCore.NamingConventions.Custom</RepositoryUrl>
