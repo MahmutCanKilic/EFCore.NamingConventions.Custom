@@ -111,4 +111,26 @@ public static class NamingConventionsExtensions
         CultureInfo? culture = null)
         where TContext : DbContext
         => (DbContextOptionsBuilder<TContext>)UseCamelCaseNamingConvention((DbContextOptionsBuilder)optionsBuilder, culture);
+
+    public static DbContextOptionsBuilder UseCustomCaseNamingConvention(
+    this DbContextOptionsBuilder optionsBuilder,
+    CultureInfo? culture = null)
+    {
+        Check.NotNull(optionsBuilder, nameof(optionsBuilder));
+
+        var extension = (optionsBuilder.Options.FindExtension<NamingConventionsOptionsExtension>()
+                ?? new NamingConventionsOptionsExtension())
+            .WithCustomCaseNamingConvention(culture);
+
+        ((IDbContextOptionsBuilderInfrastructure)optionsBuilder).AddOrUpdateExtension(extension);
+
+        return optionsBuilder;
+    }
+
+    public static DbContextOptionsBuilder<TContext> UseCustomCaseNamingConvention<TContext>(
+        this DbContextOptionsBuilder<TContext> optionsBuilder,
+        CultureInfo? culture = null)
+        where TContext : DbContext
+        => (DbContextOptionsBuilder<TContext>)UseCustomCaseNamingConvention((DbContextOptionsBuilder)optionsBuilder, culture);
+
 }

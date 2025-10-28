@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using JetBrains.Annotations;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 
-// ReSharper disable once CheckNamespace
 namespace Microsoft.EntityFrameworkCore;
 
 [DebuggerStepThrough]
@@ -17,7 +15,6 @@ internal static class Check
         if (ReferenceEquals(value, null))
         {
             NotEmpty(parameterName, nameof(parameterName));
-
             throw new ArgumentNullException(parameterName);
         }
 
@@ -34,8 +31,7 @@ internal static class Check
         {
             NotEmpty(parameterName, nameof(parameterName));
             NotEmpty(propertyName, nameof(propertyName));
-
-            throw new ArgumentException(CoreStrings.ArgumentPropertyNull(propertyName, parameterName));
+            throw new ArgumentException($"Property '{propertyName}' on '{parameterName}' cannot be null.");
         }
 
         return value;
@@ -49,8 +45,7 @@ internal static class Check
         if (value.Count == 0)
         {
             NotEmpty(parameterName, nameof(parameterName));
-
-            throw new ArgumentException(AbstractionsStrings.CollectionArgumentIsEmpty, parameterName);
+            throw new ArgumentException("Collection argument is empty.", parameterName);
         }
 
         return value;
@@ -62,15 +57,13 @@ internal static class Check
         if (value is null)
         {
             NotEmpty(parameterName, nameof(parameterName));
-
             throw new ArgumentNullException(parameterName);
         }
 
         if (value.Trim().Length == 0)
         {
             NotEmpty(parameterName, nameof(parameterName));
-
-            throw new ArgumentException(AbstractionsStrings.ArgumentIsEmpty, parameterName);
+            throw new ArgumentException("Argument is empty.", parameterName);
         }
 
         return value;
@@ -81,8 +74,7 @@ internal static class Check
         if (value is not null && value.Length == 0)
         {
             NotEmpty(parameterName, nameof(parameterName));
-
-            throw new ArgumentException(AbstractionsStrings.ArgumentIsEmpty, parameterName);
+            throw new ArgumentException("Argument is empty.", parameterName);
         }
 
         return value;
@@ -96,8 +88,7 @@ internal static class Check
         if (value.Any(e => e == null))
         {
             NotEmpty(parameterName, nameof(parameterName));
-
-            throw new ArgumentException(parameterName);
+            throw new ArgumentException($"Collection '{parameterName}' contains null elements.");
         }
 
         return value;

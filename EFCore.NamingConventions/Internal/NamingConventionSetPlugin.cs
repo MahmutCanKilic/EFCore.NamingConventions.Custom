@@ -37,6 +37,7 @@ public class NamingConventionSetPlugin : IConventionSetPlugin
             NamingConvention.LowerCase => new LowerCaseNameRewriter(culture ?? CultureInfo.InvariantCulture),
             NamingConvention.CamelCase => new CamelCaseNameRewriter(culture ?? CultureInfo.InvariantCulture),
             NamingConvention.UpperCase => new UpperCaseNameRewriter(culture ?? CultureInfo.InvariantCulture),
+            NamingConvention.CustomCase => new CustomCaseNameWriter(culture ?? CultureInfo.InvariantCulture),
             NamingConvention.UpperSnakeCase => new UpperSnakeCaseNameRewriter(culture ?? CultureInfo.InvariantCulture),
             _ => throw new ArgumentOutOfRangeException("Unhandled enum value: " + namingStyle)
         });
